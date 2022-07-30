@@ -1,0 +1,357 @@
+//Даний файл є файлом де описані стилі сайту
+/*----------------------------------------------------------------------------------------*/
+//Підключення файлу зі обнуляючими стилями
+@import '_nullstyle';
+/*----------------------------------------------------------------------------------------*/
+/*Підключення файлу зі шрифтами*/
+@import '_addFonts';
+/*-----------------------------Make a mobile first----------------------------------------*/
+/* general scss */
+.wrapper {
+  color:#fff;
+  font-family: 'Arima', cursive;
+}
+.fullscreen {
+  display: flex;
+	flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  padding: 30px;
+}
+/*----------------------------------------------------------------------------------------*/
+/*General styles for music player*/
+.musicplayer {
+  width: 250px;
+  height: 570px;
+	margin: 0 auto;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  box-shadow: rgba(0,0,0,0.3) 0px 19px 38px, rgba(0,0,0,0.22) 0px 15px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // .musicplayer__playlist
+  &__playlist {
+    z-index:  2;
+    pointer-events: none;
+    display: none;
+    position:absolute;
+    margin: -11px;
+    padding: 10px;
+    width: 250px;
+    height: 570px;
+    background: linear-gradient(45deg, #e66465 10%, #9198e5 90%,);
+    border-radius: 20px;
+    @keyframes animOpasity {
+      0%{opacity: 0;}
+      25%{opacity: 0.25;}
+      50%{opacity: 0.5;}
+      75%{opacity: 0.75;}
+      100%{opacity: 1;}
+    }
+    animation: animOpasity 0.3s;
+    &._active{
+      display: block;
+      pointer-events: all;
+    }
+  }
+  // .musicplayer__header
+  &__header {}
+  // .musicplayer__song
+  &__song {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  // .musicplayer__footer
+  &__footer { 
+    margin: 25px 0 0 0;  
+  }
+}
+/*----------------------------------------------------------------------------------------*/
+/*Window with song list*/
+.playlist {
+  // .playlist__body
+  &__body{
+    overflow-y: auto;
+    position: relative;
+    top: 50px;
+    height: 500px;
+  }
+  // .playlist__row
+  &__row {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  // .playlist__controler
+  &__controler {
+    position: absolute;
+    z-index: 5;
+    background-color: #000;
+    display: none;
+    line-height: 2;
+    &._active{
+      display: flex;
+    }
+  }
+  // .playlist__column
+  &__column {
+    // .playlist__column_playnow
+    &_playnow {
+      text-align: center;
+      width: 115px;
+      background-color: green;
+    }
+    // .playlist__column_remove
+    &_remove {
+      text-align: center;
+      width: 115px;
+      background-color: red;
+    }
+  }
+  // .playlist__title
+  &__title {
+    font-size: 12px;
+    word-wrap: break-word;
+    text-transform: uppercase;
+    width: 150px;
+  }
+  // .playlist__artist
+  &__artist {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 8px;
+  }
+  // .playlist__status
+  &__status {
+  text-align: right;
+   width: 50px;
+  }
+}
+/*----------------------------------------------------------------------------------------*/
+/*Header part*/
+.header {
+  // .header__row
+  &__row {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  // .header__playlist
+  &__playlist {
+    z-index: 5;
+   // .header__playlist_text
+   &_text {
+    width: 200px;
+    font-size: 18px;
+    line-height: 2;
+    &::before{
+      content: '';
+      width: 26px;
+      height: 26px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background-size: 80%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../img/controllers/musiclist.png");
+      overflow: hidden;
+      padding: 0 30px 0 0;
+      margin-right: 5px;
+    }
+   }
+   // .header__playlist_add
+   &_add {
+    display: block;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../img/controllers/plus.png");
+    & input[type="file"]{      
+      display: none;  
+    }
+   }
+  }
+  // .header__title
+  &__title {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+/*----------------------------------------------------------------------------------------*/
+/*Song img, title, artist part*/
+.song {
+  // .song__picture
+  &__picture {
+    width: 200px;
+    height: 200px;
+    margin: 20px 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 6px 5px #ccc;
+    background-image: url('../img/maxresdefault.jpg');
+    &._active{
+      animation: 5s linear 0s normal forwards infinite running rot;
+     @keyframes rot {
+       0% {
+         transform: rotate(0deg);
+       }
+       100% {
+         transform: rotate(360deg);
+       }
+     }
+   }
+  }
+  // .song__title
+  &__title {
+    word-wrap: break-word;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    width: 200px;
+    
+  }
+  // .song__artist
+  &__artist {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+}
+/*----------------------------------------------------------------------------------------*/
+/*Controllesr part*/
+.footer {
+  // .footer__timer
+  &__timer {  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  // .footer__volume
+  &__volume {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  // .footer__controllers
+  &__controllers {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.timer {
+  // .timer__current
+  &__current {
+   line-height: 1.5;
+   font-size: 16px;
+   // .timer__current_start
+   &_start {}
+   // .timer__current_end
+   &_end {}
+  }
+  // .timer__slider
+  &__slider {
+    width: 100%;
+  }
+}
+.volume {
+  // .volume__current
+  &__current {
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    background-position: center;
+   // .volume__current_mute
+   &_mute {
+    background-image: url("../img/controllers/mute.png");
+   }
+   // .volume__current_volume
+   &_volume {
+    background-image: url("../img/controllers/volume.png");
+   }
+  }
+  // .volume__slider
+  &__slider {
+    margin: 0px 5px;
+  }
+}
+.controllers {
+  // .controllers__item
+  &__item {
+    width: 26px;
+    height: 26px;
+    background-size: cover;
+    background-position: center;
+   // .controllers__item_shuffle
+   &_shuffle {
+    background-image: url("../img/controllers/shuffleOff.png");
+    &._active{
+      background-image: url("../img/controllers/shuffleOn.png");
+    }
+   }
+   // .controllers__item_prev
+   &_prev {
+    background-image: url("../img/controllers/prev.png");
+   }
+   // .controllers__item_play
+   &_play {
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/controllers/play.png");
+    // .controllers__item_play _pause
+    &._pause{
+      background-image: url("../img/controllers/pause.png");
+    }
+   }
+   // .controllers__item_next
+   &_next {
+    background-image: url("../img/controllers/next.png");
+   }
+   // .controllers__item_reloadlist
+   &_reloadlist {
+    background-image: url("../img/controllers/reload_listOff.png");
+    &._active{
+      background-image: url("../img/controllers/reload_listOn.png");
+    }
+    // .controllers__item_reloadlist _reloadsong
+    &._reloadsong{
+      background-image: url("../img/controllers/reload_song.png");
+    }
+   }
+   // .controllers__item_playlist
+   &_playlist{
+    margin: 25px auto 0;
+    width: 36px;
+    height: 36px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-image: url("../img/controllers/musiclist.png");
+   }
+  }
+}
+/*----------------------------------------------------------------------------------------*/
+/*How use site?*/
+//It's easy. Don't be shy

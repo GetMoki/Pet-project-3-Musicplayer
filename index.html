@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Music Player</title>
+	<link rel="icon" type="image/x-icon" href="img/favicon.png" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="fullscreen">
+			<section class="musicplayer">
+				<div class="musicplayer__playlist">
+					<div class="playlist__body">
+						<!--
+						<div class="playlist__row">
+							<div class="playlist__column">
+								<div class="playlist__title">Song title</div>
+								<div class="playlist__artist">Artist name</div>
+							</div>
+							<div class="playlist__column">
+								<div class="playlist__status">3:20</div>
+							</div>
+						</div>
+					-->
+					</div>
+				</div>
+				<div class="musicplayer__header">
+					<div class="header__row">
+						<div class="header__playlist header__playlist_text">Music list</div>
+						<label class="header__playlist header__playlist_add">
+							<input type="file" id="input" multiple>
+						</label>
+					</div>
+					<div class="header__title">Playing song x of y</div>
+				</div>
+				<div class="musicplayer__song">
+					<div class="song__picture"></div>
+					<div class="song__title">Song title</div>
+					<div class="song__artist">Artist name</div>
+					<audio id="main__audio">
+						<source src="" id="src" />
+					</audio>
+				</div>
+				<div class="musicplayer__footer">
+					<input type="range" min="0" max="100" value="0" step="1" class="timer__slider">
+					<div class="footer__timer">
+						<div class="timer__current timer__current_start">0:00</div>
+						<div class="timer__current timer__current_end">0:00</div>
+					</div>
+					<div class="footer__volume">
+						<div class="volume__current volume__current_mute"></div>
+						<input type="range" min="0" max="100" value="100" step="1" class="volume__slider">
+						<div class="volume__current volume__current_volume"></div>
+					</div>
+					<div class="footer__controllers">
+						<div class="controllers__item controllers__item_shuffle"></div>
+						<div class="controllers__item controllers__item_prev"></div>
+						<div class="controllers__item controllers__item_play"></div>
+						<div class="controllers__item controllers__item_next"></div>
+						<div class="controllers__item controllers__item_reloadlist"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+	<!--Connection library for parsing mp3 files-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" referrerpolicy="no-referrer"></script>
+	<!--Connect the JQuery library-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!--Connected a file with scripts - Javascript-->
+	<script src="js/script.js"></script>
+</body>
+
+</html>
